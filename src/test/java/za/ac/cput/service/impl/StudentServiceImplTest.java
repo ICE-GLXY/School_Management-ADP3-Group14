@@ -59,10 +59,10 @@ class StudentServiceImplTest {
         List<Student> studentList = this.service.findAll();
         assertEquals(0,studentList.size());
 
-    }
+    }}
 
 
-    @Test
+    /*@Test
     @Order(3)
     void findAll() {
         List<Student> studentList = this.service.findAll();
@@ -75,4 +75,4 @@ class StudentServiceImplTest {
         List<Student> studentList = this.service.findAll();
         assertEquals(1, studentList.size());
     }
-}
+}*/
