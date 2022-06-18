@@ -12,6 +12,7 @@ import java.util.Optional;
 @Service
 public class CityServiceImpl implements ICityService {
     private final ICityRepository repository;
+    private CityServiceImpl ICityRepository;
 
     @Autowired
     public CityServiceImpl(ICityRepository repository) {this.repository = repository;}
@@ -36,4 +37,13 @@ public class CityServiceImpl implements ICityService {
         if(city.isPresent())
        delete(city.get());
     }
+
+    @Override
+    public List<City> findAllCities(){
+        return this.ICityRepository.findAll();
+    }
+    public Optional<City> findCityByCountryID(String countryID){
+        return this.ICityRepository.findCityByCountryID(countryID);
+    }
+
 }
