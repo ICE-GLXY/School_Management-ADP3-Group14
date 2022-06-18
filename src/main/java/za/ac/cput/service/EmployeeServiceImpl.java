@@ -51,4 +51,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return repository.findEmployeeByEmail(email);
     }
 
+    //Question 6
+    @Override
+    public List<Employee> getEmployeesByCity(String cityId) {
+        List<Employee> employeeList = readAll().stream().filter(x -> x.getCity().getId() == cityId).toList();
+
+        return  employeeList;
+    }
+
 }

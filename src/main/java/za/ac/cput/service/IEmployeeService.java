@@ -14,4 +14,7 @@ public interface IEmployeeService extends IService<Employee,String> {
     List<Employee> readAll();
     //Question 5
     Optional<Employee> findEmployeeByEmail(String email);
+
+    //Question 6
+    List<Employee> getEmployeesByCity(String cityId);
 }

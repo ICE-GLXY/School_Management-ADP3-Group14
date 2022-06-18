@@ -1,3 +1,9 @@
+/*
+TITILAYO AKINJOLE
+220283982
+ */
+
+
 package za.ac.cput.domain;
 
 import javax.persistence.Embeddable;
@@ -106,4 +112,4 @@ public class Name implements Serializable {
 
     }
 
-//uyguyuyguygiy
+

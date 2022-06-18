@@ -16,6 +16,8 @@ public class Employee
     private String staffId;
     @NotNull
     private String email;
+    @NotNull
+    private City city;
     @Embedded
     private Name name;
 
@@ -27,6 +29,7 @@ public class Employee
         this.staffId = b.staffId;
         this.email = b.email;
         this.name = b.name;
+        this.city = b.city;
     }
 
     public String getStaffId() {
@@ -43,6 +46,10 @@ public class Employee
 
     public void setName(Name name) {
         this.name = name;
+    }
+
+    public City getCity() {
+        return city;
     }
     @Override
     public String toString() {
@@ -72,6 +79,8 @@ public class Employee
         private String staffId;
         private String email;
         private Name name;
+        private City city;
+
 
         public Builder staffId(String staffId) {
             this.staffId = staffId;
@@ -87,6 +96,13 @@ public class Employee
             this.name = name;
             return this;
         }
+
+        public Builder city(City city) {
+            this.city = city;
+            return this;
+
+        }
+
         public Builder copy(Employee e){
             this.staffId = e.staffId;
             this.email = e.email;
