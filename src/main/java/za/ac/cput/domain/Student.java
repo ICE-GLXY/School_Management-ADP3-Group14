@@ -8,11 +8,11 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Student {
-
+public class Student implements Serializable {
 
     @NotNull
     @Id
@@ -51,7 +51,7 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return studentId.equals(student.studentId) && email.equals(student.email) && name.equals(student.name);
+        return Objects.equals(studentId, student.studentId) && Objects.equals(email, student.email) && Objects.equals(name, student.name);
     }
 
     @Override

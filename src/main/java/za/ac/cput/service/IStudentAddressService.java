@@ -13,6 +13,7 @@ public interface IStudentAddressService extends IService <StudentAddress,String>
 
     List<StudentAddress> findAll();
 
-    //void deleteByID(String id);
+    void deleteByID(String id);
+    List <StudentAddress> findByAddressCityCountryName (String name);
 
 }

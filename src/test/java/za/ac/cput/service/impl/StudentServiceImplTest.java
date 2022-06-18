@@ -1,3 +1,7 @@
+/* StudentServiceImplTest.java
+Author: Chante Lewis:216118395
+16/06/2022
+ */
 package za.ac.cput.service.impl;
 
 import org.junit.jupiter.api.MethodOrderer;
@@ -19,8 +23,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StudentServiceImplTest {
 
-    Name name = NameFactory.build("Chante", "Alicia", "Lewis");
-    Student student = StudentFactory.build("216118395", "chantel@yahoo.com", name);
+    private final  Name name = NameFactory.build("test-name", "test-middle", "test-surname");
+    private final  Student student = StudentFactory.build("216118395", "chantel@yahoo.com",name);
     @Autowired
     private IStudentService service;
 
@@ -33,8 +37,8 @@ class StudentServiceImplTest {
                 () -> assertNotNull(saved),
                 () -> assertEquals(this.student, saved)
         );
-    }
 
+    }
 
     @Test
     @Order(2)
@@ -49,7 +53,7 @@ class StudentServiceImplTest {
 
 
     @Test
-    @Order(3)
+    @Order(5)
     void delete(){
         this.service.delete(this.student);
         List<Student> studentList = this.service.findAll();
@@ -59,8 +63,15 @@ class StudentServiceImplTest {
 
 
     @Test
-    @Order(4)
+    @Order(3)
     void findAll() {
+        List<Student> studentList = this.service.findAll();
+        assertEquals(1, studentList.size());
+    }
+
+    @Test
+    @Order(4)
+    void findStudentsByName_Surname() {
         List<Student> studentList = this.service.findAll();
         assertEquals(1, studentList.size());
     }

@@ -7,6 +7,7 @@ package za.ac.cput.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import za.ac.cput.domain.Student;
 import za.ac.cput.domain.StudentAddress;
 import za.ac.cput.repository.IStudentAddressRepository;
 import za.ac.cput.service.IStudentAddressService;
@@ -36,6 +37,17 @@ public class StudentAddressServiceImpl implements IStudentAddressService {
     @Override
     public void delete(StudentAddress studentAddress) {this.repository.delete(studentAddress);}
 
+    //Delete by studentAddress id
+    @Override
+    public void deleteByID(String id) {
+        Optional<StudentAddress> studentAddress = read(id);
+        if(studentAddress.isPresent()) delete (studentAddress.get());
+    }
+
     //Read all operation
     public List<StudentAddress> findAll() {return this.repository.findAll();}
+
+    public List<StudentAddress> findByAddressCityCountryName(String name) {
+        return repository.findByAddressCityCountryName(name);
+    }
 }

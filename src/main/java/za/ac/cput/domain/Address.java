@@ -4,22 +4,28 @@ Entity for the Address
 Author: 214258041_Lelihle Gazi
 10/06/2022
  */
-import javax.persistence.Embedded;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Embeddable;
 
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+
 @Embeddable
 public class Address implements Serializable {
 
-   @NotNull private String unitNumber;
-   @NotNull private String complexName;
-   @NotNull private String streetNumber;
-   @NotNull private String streetName;
-   @NotNull private int postalCode;
-   @Embedded
-   private City city;
+    @NotNull private String unitNumber;
+    @NotNull private String complexName;
+    @NotNull private String streetNumber; //mandatory attribute
+    @NotNull private String streetName; //mandatory attribute
+    @NotNull private int postalCode; //mandatory attribute
+    @ManyToOne(cascade = {PERSIST, MERGE})
+    @NotFound(action = NotFoundAction.IGNORE)
+    @NotNull private City city; //mandatory attribute
 
     protected Address(){
 
@@ -163,5 +169,3 @@ public class Address implements Serializable {
         }
     }
 }
-
-
